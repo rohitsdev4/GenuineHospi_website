@@ -6,7 +6,7 @@
 
 **Genuine Hospi Enterprises** provides comprehensive hospital setup solutions. Our expertise encompasses designing and building ICU and modular OT units that adhere to NABH compliance standards, including medical gas pipeline systems, oxygen manifolds, and complete plant installations.
 
-- **Website**: [genuinehospi.com](https://genuinehospi.com)
+- **Website**: [genuinehospi.vercel.app](https://genuinehospi.vercel.app)
 - **Phone**: +91 62075 07418 | +91 94788 84840
 - **Email**: rohitsingh8885882@gmail.com
 - **Head Office**: 204, St 02, Sanjay Gandhi Nagar, Industrial Area, Jalandhar, 144004, Punjab
