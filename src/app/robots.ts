@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://genuinehospi.com/sitemap.xml',
+    sitemap: 'https://genuinehospi.vercel.app/sitemap.xml',
   }
 }

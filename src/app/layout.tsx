@@ -16,7 +16,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://genuinehospi.com'),
+  metadataBase: new URL('https://genuinehospi.vercel.app'),
   title: {
     default: 'Genuine Hospi Enterprises | Modular OT, ICU Setup, Medical Gas Pipeline & Hospital Equipment Manufacturer India',
     template: '%s | Genuine Hospi Enterprises',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://genuinehospi.com',
+    url: 'https://genuinehospi.vercel.app',
     siteName: 'Genuine Hospi Enterprises',
     title: 'Genuine Hospi Enterprises | Modular OT, ICU, Medical Gas Pipeline & Hospital Equipment',
     description: 'Leading manufacturer of Modular OTs, ICU Setups, Medical Gas Pipelines, Hospital Furniture across India. NABH compliant.',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   //   google: 'your-google-verification-code',
   // },
   alternates: {
-    canonical: 'https://genuinehospi.com',
+    canonical: 'https://genuinehospi.vercel.app',
   },
   category: 'healthcare',
 };
@@ -105,9 +105,9 @@ export default function RootLayout({
               '@type': 'MedicalBusiness',
               name: 'Genuine Hospi Enterprises',
               description: 'Leading manufacturer and supplier of Modular Operation Theaters, ICU Setup, Medical Gas Pipeline Systems, Hospital Beds, Hospital Furniture & complete hospital infrastructure solutions across India.',
-              url: 'https://genuinehospi.com',
-              logo: 'https://genuinehospi.com/logo.svg',
-              image: 'https://genuinehospi.com/images/modular-ot.jpg',
+              url: 'https://genuinehospi.vercel.app',
+              logo: 'https://genuinehospi.vercel.app/logo.svg',
+              image: 'https://genuinehospi.vercel.app/images/modular-ot.jpg',
               telephone: ['+916207507418', '+919478884840'],
               email: 'rohitsingh8885882@gmail.com',
               address: [
