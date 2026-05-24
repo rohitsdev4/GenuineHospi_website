@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://genuinehospi.com'
-  
+  const baseUrl = 'https://genuinehospi.vercel.app'
+
   return [
     {
       url: baseUrl,
