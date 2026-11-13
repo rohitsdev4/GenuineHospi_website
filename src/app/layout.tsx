@@ -1,47 +1,93 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { PT_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from '@/components/ui/toaster';
+import { GoogleServices } from '@/components/GoogleServices';
+import { COMPANY_INFO, SITE_URL } from '@/lib/site-config';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-pt-sans',
+  display: 'swap',
 });
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700', '800', '900'],
   variable: '--font-playfair-display',
+  display: 'swap',
 });
 
+export const viewport: Viewport = {
+  themeColor: '#0284c7',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+const googleVerificationCode =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'd92703a42ec0210f';
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://genuinehospi.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Genuine Hospi Enterprises | Modular OT, ICU Setup, Medical Gas Pipeline & Hospital Equipment Manufacturer India',
+    default:
+      'Genuine Hospi Enterprises | Modular OT, ICU Setup, Medical Gas Pipeline & Hospital Equipment Manufacturer India',
     template: '%s | Genuine Hospi Enterprises',
   },
-  description: 'Leading manufacturer and supplier of Modular Operation Theaters, ICU Setup, Medical Gas Pipeline Systems (MGPS), Hospital Beds, Hospital Furniture & complete hospital infrastructure solutions across India. NABH compliant. PAN India service.',
+  description:
+    'Leading manufacturer and supplier of Modular Operation Theaters, ICU Setup, Medical Gas Pipeline Systems (MGPS), Hospital Beds, Hospital Furniture, Oxygen Generation Plants & Hospital HVAC across India. NABH compliant. PAN India service.',
   keywords: [
-    'modular OT', 'modular operation theater', 'modular operation theatre',
-    'modular OT manufacturer India', 'modular OT supplier',
-    'ICU setup', 'ICU setup India', 'ICU equipment supplier',
-    'medical gas pipeline', 'medical gas pipeline system', 'MGPS installation',
-    'medical gas pipeline system manufacturer', 'medical gas pipeline India',
-    'hospital beds', 'hospital bed manufacturer India', 'hospital bed supplier',
-    'hospital furniture', 'hospital furniture manufacturer India',
-    'hospital equipment', 'hospital equipment supplier India',
-    'hospital setup solutions', 'hospital infrastructure',
-    'NABH compliant hospital equipment', 'NABH compliant modular OT',
-    'oxygen generation plant', 'oxygen plant hospital',
-    'hospital HVAC system', 'operation theater air conditioning',
-    'hospital setup company India', 'hospital construction India',
-    'Genuine Hospi Enterprises', 'hospital equipment Jalandhar',
-    'hospital equipment Punjab', 'hospital equipment Bihar',
+    'modular OT',
+    'modular operation theater',
+    'modular operation theatre',
+    'modular OT manufacturer India',
+    'modular OT supplier',
+    'ICU setup',
+    'ICU setup India',
+    'ICU equipment supplier',
+    'medical gas pipeline',
+    'medical gas pipeline system',
+    'MGPS installation',
+    'medical gas pipeline system manufacturer',
+    'medical gas pipeline India',
+    'hospital beds',
+    'hospital bed manufacturer India',
+    'hospital bed supplier',
+    'hospital furniture',
+    'hospital furniture manufacturer India',
+    'hospital equipment',
+    'hospital equipment supplier India',
+    'hospital setup solutions',
+    'hospital infrastructure',
+    'NABH compliant hospital equipment',
+    'NABH compliant modular OT',
+    'oxygen generation plant',
+    'oxygen plant hospital',
+    'PSA oxygen plant India',
+    'hospital HVAC system',
+    'operation theater air conditioning',
+    'hospital setup company India',
+    'hospital construction India',
+    'Genuine Hospi Enterprises',
+    'hospital equipment Jalandhar',
+    'hospital equipment Punjab',
+    'hospital equipment Bihar',
   ],
-  authors: [{ name: 'Genuine Hospi Enterprises' }],
-  creator: 'Genuine Hospi Enterprises',
-  publisher: 'Genuine Hospi Enterprises',
+  authors: [{ name: COMPANY_INFO.name, url: SITE_URL }],
+  creator: COMPANY_INFO.name,
+  publisher: COMPANY_INFO.name,
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48', type: 'image/x-icon' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   formatDetection: {
     email: true,
     address: true,
@@ -50,10 +96,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://genuinehospi.vercel.app',
-    siteName: 'Genuine Hospi Enterprises',
-    title: 'Genuine Hospi Enterprises | Modular OT, ICU, Medical Gas Pipeline & Hospital Equipment',
-    description: 'Leading manufacturer of Modular OTs, ICU Setups, Medical Gas Pipelines, Hospital Furniture across India. NABH compliant.',
+    url: SITE_URL,
+    siteName: COMPANY_INFO.name,
+    title:
+      'Genuine Hospi Enterprises | Modular OT, ICU, Medical Gas Pipeline & Hospital Equipment',
+    description:
+      'Leading manufacturer of Modular OTs, ICU Setups, Medical Gas Pipelines, Hospital Furniture & PSA Oxygen Plants across India. NABH compliant.',
     images: [
       {
         url: '/images/modular-ot.jpg',
@@ -66,7 +114,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Genuine Hospi Enterprises | Hospital Equipment Manufacturer India',
-    description: 'Leading manufacturer of Modular OTs, ICU Setups, Medical Gas Pipelines & Hospital Equipment across India.',
+    description:
+      'Leading manufacturer of Modular OTs, ICU Setups, Medical Gas Pipelines & Hospital Equipment across India.',
     images: ['/images/modular-ot.jpg'],
   },
   robots: {
@@ -80,11 +129,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // verification: {
-  //   google: 'your-google-verification-code',
-  // },
-  alternates: {
-    canonical: 'https://genuinehospi.vercel.app',
+  verification: {
+    google: googleVerificationCode,
   },
   category: 'healthcare',
 };
@@ -94,95 +140,155 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    '@id': `${SITE_URL}/#organization`,
+    name: COMPANY_INFO.name,
+    alternateName: COMPANY_INFO.shortName,
+    description:
+      'Leading manufacturer and supplier of Modular Operation Theaters, ICU Setup, Medical Gas Pipeline Systems (MGPS), Hospital Beds, Hospital Furniture, Oxygen Generation Plants & Hospital HVAC across India.',
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/logo.png`,
+      width: 512,
+      height: 512,
+    },
+    image: `${SITE_URL}/images/modular-ot.jpg`,
+    foundingDate: '2015',
+    telephone: [COMPANY_INFO.phones.primary, COMPANY_INFO.phones.secondary],
+    email: COMPANY_INFO.email,
+    address: [
+      {
+        '@type': 'PostalAddress',
+        streetAddress: COMPANY_INFO.addresses.headOffice.street,
+        addressLocality: COMPANY_INFO.addresses.headOffice.city,
+        addressRegion: COMPANY_INFO.addresses.headOffice.state,
+        postalCode: COMPANY_INFO.addresses.headOffice.postalCode,
+        addressCountry: COMPANY_INFO.addresses.headOffice.country,
+      },
+      {
+        '@type': 'PostalAddress',
+        streetAddress: COMPANY_INFO.addresses.branchOffice.street,
+        addressLocality: COMPANY_INFO.addresses.branchOffice.city,
+        addressRegion: COMPANY_INFO.addresses.branchOffice.state,
+        postalCode: COMPANY_INFO.addresses.branchOffice.postalCode,
+        addressCountry: COMPANY_INFO.addresses.branchOffice.country,
+      },
+    ],
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '31.3260',
+      longitude: '75.5762',
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.phones.primary,
+        contactType: 'sales',
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi', 'Punjabi'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.phones.secondary,
+        contactType: 'customer support',
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi', 'Punjabi'],
+      },
+    ],
+    areaServed: [
+      { '@type': 'Country', name: 'India' },
+      ...COMPANY_INFO.serviceStates.map((state) => ({
+        '@type': 'State',
+        name: state,
+      })),
+    ],
+    priceRange: '$$',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Hospital Equipment & Infrastructure Solutions',
+      itemListElement: [
+        {
+          '@type': 'OfferCatalog',
+          name: 'Modular Operation Theaters',
+          description:
+            'NABH compliant SS 304 Modular Operation Theaters with PAN India service',
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Intensive Care Units (ICU)',
+          description:
+            'Custom-designed ICU setups with advanced patient monitoring and life support systems',
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Medical Gas Pipeline Systems',
+          description:
+            'End-to-end MGPS installations adhering to HTM 02-01 and ISO 7396-1 safety standards',
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Hospital Furniture',
+          description:
+            'Complete range of ICU beds, Fowler beds, examination tables, trolleys, and crash carts',
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Oxygen Generation Plant',
+          description:
+            'On-site PSA oxygen generation plants for continuous medical-grade oxygen supply',
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Air Conditioning System (Hospital HVAC)',
+          description:
+            'ASHRAE 170 and NABH compliant laminar airflow HVAC systems for OTs and ICUs',
+        },
+      ],
+    },
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'MedicalBusiness',
-              name: 'Genuine Hospi Enterprises',
-              description: 'Leading manufacturer and supplier of Modular Operation Theaters, ICU Setup, Medical Gas Pipeline Systems, Hospital Beds, Hospital Furniture & complete hospital infrastructure solutions across India.',
-              url: 'https://genuinehospi.vercel.app',
-              logo: 'https://genuinehospi.vercel.app/logo.svg',
-              image: 'https://genuinehospi.vercel.app/images/modular-ot.jpg',
-              telephone: ['+916207507418', '+919478884840'],
-              email: 'rohitsingh8885882@gmail.com',
-              address: [
-                {
-                  '@type': 'PostalAddress',
-                  streetAddress: '204, St 02, Sanjay Gandhi Nagar, Industrial Area',
-                  addressLocality: 'Jalandhar',
-                  addressRegion: 'Punjab',
-                  postalCode: '144004',
-                  addressCountry: 'IN',
-                },
-                {
-                  '@type': 'PostalAddress',
-                  streetAddress: 'Bazaar, Pachrukhi',
-                  addressLocality: 'Siwan',
-                  addressRegion: 'Bihar',
-                  postalCode: '841241',
-                  addressCountry: 'IN',
-                },
-              ],
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: '31.3260',
-                longitude: '75.5762',
-              },
-              areaServed: {
-                '@type': 'Country',
-                name: 'India',
-              },
-              priceRange: '$$',
-              openingHoursSpecification: {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                opens: '09:00',
-                closes: '18:00',
-              },
-              sameAs: [],
-              hasOfferCatalog: {
-                '@type': 'OfferCatalog',
-                name: 'Hospital Equipment & Infrastructure Solutions',
-                itemListElement: [
-                  {
-                    '@type': 'OfferCatalog',
-                    name: 'Modular Operation Theaters',
-                    description: 'NABH compliant SS 304 Modular Operation Theaters with PAN India service',
-                  },
-                  {
-                    '@type': 'OfferCatalog',
-                    name: 'Intensive Care Units (ICU)',
-                    description: 'Custom-designed ICU setups with advanced patient monitoring and life support systems',
-                  },
-                  {
-                    '@type': 'OfferCatalog',
-                    name: 'Medical Gas Pipeline Systems',
-                    description: 'End-to-end MGPS installations adhering to HTM 2022 safety standards',
-                  },
-                  {
-                    '@type': 'OfferCatalog',
-                    name: 'Hospital Furniture',
-                    description: 'Complete range of hospital beds, examination tables, trolleys, and chairs',
-                  },
-                  {
-                    '@type': 'OfferCatalog',
-                    name: 'Oxygen Generation Plant',
-                    description: 'On-site oxygen generation plants for continuous medical-grade oxygen supply',
-                  },
-                ],
-              },
-            }),
+            __html: JSON.stringify(organizationSchema),
           }}
         />
       </head>
-      <body className={`${ptSans.variable} ${playfairDisplay.variable} font-body antialiased`}>
+      <body
+        className={`${ptSans.variable} ${playfairDisplay.variable} font-body antialiased`}
+      >
+        {gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         {children}
         <Toaster />
+        <GoogleServices />
       </body>
     </html>
   );

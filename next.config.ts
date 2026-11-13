@@ -1,17 +1,13 @@
-
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.genuinehospi.com',
+        hostname: 'genuinehospi.vercel.app',
         pathname: '/images/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
       },
     ],
   },
